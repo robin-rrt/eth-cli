@@ -4,6 +4,8 @@ import fs from 'fs';
 import * as ethers from 'ethers';
 
 const POLYGON_NODE_URL = "https://speedy-nodes-nyc.moralis.io/492c808ff04c365f5bea8bb5/polygon/mainnet";
+const RINKEBY_NODE_URL = "https://speedy-nodes-nyc.moralis.io/744601fb038cdc8a5aafd8bc/eth/rinkeby";
+const KOVAN_NODE_URL = "https://speedy-nodes-nyc.moralis.io/744601fb038cdc8a5aafd8bc/eth/kovan";
 
 function getProvider(network?: string) {
 	network = network ?? 'mainnet';
@@ -12,6 +14,10 @@ function getProvider(network?: string) {
 			return new ethers.providers.JsonRpcProvider(POLYGON_NODE_URL);
 		case 'mainnet':
 			return ethers.getDefaultProvider();
+		case 'rinkeby':
+			return new ethers.providers.JsonRpcProvider(RINKEBY_NODE_URL);
+		case 'kovan':
+			return new ethers.providers.JsonRpcProvider(KOVAN_NODE_URL);
 		default:
 			console.error(`Unknown network '${network}'`);
 			throw new Error()
