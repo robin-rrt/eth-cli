@@ -53,7 +53,7 @@ async function main() {
 		.option('-f, --force', 'force existing mnemonic file to be overwritten')
 		.description('generate a new signer and output to .signers/.signer. path is overridable with -o')
 		.action((options) => {
-			const path = options.outfile ?? './signers/.signer';
+			const path = options.outfile ?? './.signer';
 
 			// check to make sure path exists and exit if it does and override flag isn't given
 			if (!options.force && fs.existsSync(path)) {
