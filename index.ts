@@ -6,12 +6,15 @@ import * as ethers from 'ethers';
 const POLYGON_NODE_URL = "https://speedy-nodes-nyc.moralis.io/492c808ff04c365f5bea8bb5/polygon/mainnet";
 const RINKEBY_NODE_URL = "https://speedy-nodes-nyc.moralis.io/744601fb038cdc8a5aafd8bc/eth/rinkeby";
 const KOVAN_NODE_URL = "https://speedy-nodes-nyc.moralis.io/744601fb038cdc8a5aafd8bc/eth/kovan";
+const MUMBAI_NODE_URL = "https://speedy-nodes-nyc.moralis.io/744601fb038cdc8a5aafd8bc/polygon/mumbai";
 
 function getProvider(network?: string) {
 	network = network ?? 'mainnet';
 	switch (network) {
 		case 'polygon-mainnet':
 			return new ethers.providers.JsonRpcProvider(POLYGON_NODE_URL);
+		case 'mumbai':
+			return new ethers.providers.JsonRpcProvider(MUMBAI_NODE_URL);
 		case 'mainnet':
 			return ethers.getDefaultProvider();
 		case 'rinkeby':
